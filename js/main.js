@@ -61,32 +61,17 @@ function atualizaEstatisticas(peca, operacao) {
     })
 }
 
-
-
-
 /*TROCA DE COR*/
 
+const trocaCor = document.querySelector('#trocacor')
 var robo = document.querySelector('.robo')
 const robos = ['../img/robotron-amarelo.png', '../img/robotron-branco.png', '../img/robotron-preto.png', '../img/robotron-rosa.png', '../img/robotron-vermelho.png']
+let i = 0
 
-function trocaCor () {
+trocaCor.addEventListener('click', (evento) => {
     robo.src = robos[i]
-}
-
-
-for (let i = 0; i < robos.length; i++) {
-    robo.addEventListener('click', (evento) => {
-    })
-}
-
-
-
-
-
-/*
-
-1 achar o botao
-
-
-<img class="robo" src="img/robotron.png" alt="Robotron">
-*/
+    i = i + 1
+    if (i > 4) {
+        i = 0
+    }
+})
