@@ -34,7 +34,6 @@ const pecas = {
     }
 }
 
-
 botoes.forEach( (botao) => { 
     botao.addEventListener('click', (evento) => {
         somaSubtrai(evento.target.dataset.controle, evento.target.parentNode)
@@ -53,7 +52,6 @@ function somaSubtrai (operacao, controle) {
 } 
 
 function atualizaEstatisticas(peca, operacao) {
-    console.log(pecas[peca])
     estatisticas.forEach((element) => {
         if (operacao === '-') { 
             element.textContent = parseInt(element.textContent) - pecas[peca][element.dataset.estatisticas]
@@ -62,3 +60,33 @@ function atualizaEstatisticas(peca, operacao) {
         }
     })
 }
+
+
+
+
+/*TROCA DE COR*/
+
+var robo = document.querySelector('.robo')
+const robos = ['../img/robotron-amarelo.png', '../img/robotron-branco.png', '../img/robotron-preto.png', '../img/robotron-rosa.png', '../img/robotron-vermelho.png']
+
+function trocaCor () {
+    robo.src = robos[i]
+}
+
+
+for (let i = 0; i < robos.length; i++) {
+    robo.addEventListener('click', (evento) => {
+    })
+}
+
+
+
+
+
+/*
+
+1 achar o botao
+
+
+<img class="robo" src="img/robotron.png" alt="Robotron">
+*/
