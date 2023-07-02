@@ -39,7 +39,8 @@ const pecas = {
 botoes.forEach(element => {
     element.addEventListener('click', (event) => {
         somaSubtrai (event.target.dataset.controle, event.target.parentNode)
-        mudaEstatisticas (event.target.parentNode)
+        mudaEstatisticas (event.target.parentNode.dataset.peca)
+        // console.log(event.target.parentNode.dataset.peca)
     });
 });
 
@@ -56,17 +57,21 @@ function somaSubtrai (operacao, controle) {
 }
 
 
-function mudaEstatisticas (peca, controle) {
-    estatisticas.forEach((elemento) => {
-        const estatistica = elemento.dataset.estatistica
-        const indiceEstatistica = pecas[peca][estatistica]
-        
-        if (controle == "-") {
-            elemento.textContent = parseInt(elemento.textContent) - indiceEstatistica // TENTAR  parseInt(elemento.textContent) * numPeca.value
-        } else {
-            elemento.textContent = parseInt(elemento.textContent) + indiceEstatistica
-        }
-    })
+function mudaEstatisticas (peca) {
+    for (let i = 0 ; i < contador.length ; i ++) {
+        var numContador = contador[i].value
+        console.log(numContador)
+
+        estatisticas.forEach((elemento) => {
+            const estatistica = elemento.dataset.estatistica
+            const indiceEstatistica = pecas[peca][estatistica]
+            
+            //console.log(estatistica)
+            //console.log(indiceEstatistica)
+
+            elemento.textContent = parseInt(indiceEstatistica) * numContador
+        })
+    }
 }
 
 
