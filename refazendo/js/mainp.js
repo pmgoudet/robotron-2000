@@ -67,7 +67,7 @@ function mudaEstatisticas (peca) {
             soma += parseInt(indiceEstatistica * contador[i].value)
             elemento.textContent = soma[i]
         })
-    }
+    } 
 } 
 
 
