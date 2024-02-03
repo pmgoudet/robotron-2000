@@ -1,6 +1,6 @@
 const botoes = document.querySelectorAll('[data-controle]');
 var numBotoes = document.querySelectorAll('[data-contador]');
-let estatisticas = document.querySelectorAll('[data-estatistica]')
+let estatisticas = document.querySelectorAll('[data-estatistica]');
 
 const pecas = {
     "bracos": {
@@ -38,8 +38,8 @@ const pecas = {
 
 botoes.forEach((botao) => {
     botao.addEventListener('click', () => {
-        regulaAtributos(botao);
         mudaEstatisticas(botao);
+        regulaAtributos(botao);
     })
 });
 
@@ -48,7 +48,7 @@ function regulaAtributos (botao) {
     let dataPeca = botao.parentElement.children[1];
     
     if (maisMenos == '-' && dataPeca.value > 0) {
-        dataPeca.value = parseInt(dataPeca.value) - 1
+        dataPeca.value = parseInt(dataPeca.value) - 1;
     } else if (maisMenos == '-' && dataPeca.value == 0) {
         dataPeca.value = 0;
     } else {
@@ -66,27 +66,31 @@ function mudaEstatisticas(botao) {
         let somaEstatistica = parseInt(pecas[nomePeca][nomeEstatistica]);
         let valorEstatistica = parseInt(estatistica.textContent);
 
-        console.log(maisMenos)
-        console.log(dataPeca.value)
-        console.log(valorEstatistica)
-        console.log(somaEstatistica)
-        
-        if (maisMenos == '-') { // AQUELE PAU DO ZERO PRO UM QUE CAGA TUDO NESSA BOSTA
-            valorEstatistica -= somaEstatistica
+        if (maisMenos == '-' && dataPeca.value > 0) {
+            valorEstatistica -= somaEstatistica;
+        } else if (maisMenos == '-' && dataPeca.value == 0) {
+            valorEstatistica = valorEstatistica;
         } else {
-            valorEstatistica += somaEstatistica
+            valorEstatistica += somaEstatistica;
         }
 
-        estatistica.textContent = valorEstatistica
+        estatistica.textContent = valorEstatistica;
     });
 }
 
-/*
-    "bracos": {
-        "forca": 29,
-        "poder": 35,
-        "energia": -21,
-        "velocidade": -5
-    },
-*/
+// TROCAR COR DO ROBÔ
 
+const botaoCor = document.getElementById('trocaCor');
+let robo = document.querySelector('.robo')
+const cores = ['../img/robotron.png', '../img/robotron-amarelo.png', '../img/robotron-branco.png', '../img/robotron-preto.png', '../img/robotron-rosa.png', '../img/robotron-vermelho.png']
+let i=0;
+
+botaoCor.addEventListener('click', trocaCor);
+
+function trocaCor() {
+    i++;
+    robo.src = cores[i];
+    if (i == 5) {
+        i=-1;
+    }
+}
